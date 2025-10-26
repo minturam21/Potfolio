@@ -7,12 +7,12 @@ export const Education = () => {
   const education = [
     {
       degree: 'B.Sc. Physics',
-      institution: 'University Name',
+      institution: 'ADP Collage / Gauhati University',
       period: '2023 - 2026',
       status: 'Ongoing',
-      location: 'City, Country',
+      location: 'Nogaon, Assam, India',
       description: 'Focusing on theoretical physics, quantum mechanics, and computational methods. Maintaining strong academic performance while developing research skills.',
-      highlights: ['Quantum Mechanics', 'Thermodynamics', 'Mathematical Physics', 'Research Methods'],
+      highlights: ['Quantum Mechanics', 'Thermodynamics',' Condensed Matter Physics ', 'Mathematical Physics','Calculus', 'Research Methods'],
       color: 'from-blue-500 to-cyan-500'
     },
     {
@@ -22,19 +22,30 @@ export const Education = () => {
       status: 'Completed',
       location: 'Online',
       description: 'Comprehensive program covering data analysis, machine learning, and statistical methods using Python ecosystem.',
-      highlights: ['Python Programming', 'Machine Learning', 'Data Visualization', 'Statistical Analysis'],
+      highlights: ['Python Programming', 'Machine Learning', 'Data Visualization', 'Statistical Analysis','Data Cleaning'],
       color: 'from-purple-500 to-pink-500'
+    },
+        {
+      degree: " CS50's Introduction to Programming with Python (Audit Track)",
+      institution: 'HarvardX CS50P by edX',
+      period: '2025',
+      status: 'Completed',
+      location: 'Online',
+      description: 'CS50’s Introduction to Programming with Python is a beginner-friendly course offered by Harvard University that teaches programming fundamentals using Python. It’s designed for learners with or without prior coding experience and emphasizes hands-on practice through real-world inspired exercises.',
+      highlights: ['Core programming concepts', 'Debugging and testing', 'Advanced tools', 'Object-oriented programming'],
+      color: 'from-red-500 to-yellow-500'
     },
     {
       degree: 'JLPT Japanese Preparation',
-      institution: 'Language Institute',
+      institution: 'Self Study',
       period: '2025',
       status: 'In Progress',
-      location: 'City, Country',
+      location: 'Online',
       description: 'Preparing for Japanese Language Proficiency Test to enhance international communication skills and cultural understanding.',
       highlights: ['Japanese Grammar', 'Kanji', 'Listening Skills', 'Cultural Studies'],
       color: 'from-green-500 to-teal-500'
     }
+
   ];
 
   return (

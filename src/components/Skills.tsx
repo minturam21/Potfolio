@@ -22,19 +22,19 @@ export const Skills = () => {
     {
       title: 'Data Science',
       icon: BarChart3,
-      skills: ['NumPy', 'Pandas', 'Matplotlib'],
+      skills: ['NumPy', 'Pandas', 'Matplotlib',],
       color: 'from-purple-500 to-pink-500'
     },
     {
       title: 'Tools & Others',
       icon: Terminal,
-      skills: ['Git', 'Jupyter', 'VS Code', 'Linux'],
+      skills: ['Git & Github', 'Jupyter', 'VS Code', 'Linux','LaTeX','Mathematica'],
       color: 'from-green-500 to-teal-500'
     },
     {
       title: 'Physics & Math',
       icon: Brain,
-      skills: ['Quantum Mechanics', 'Thermodynamics', 'Statistics'],
+      skills: ['Calculus','Statistics','Classical Algebra','Thermodynamics', 'Classical Mechanics','Quantum Mechanics','Electromagnetic Theory','Condensed Matter Physics', 'Heat and Thermodynamics'],
       color: 'from-orange-500 to-red-500'
     }
   ];

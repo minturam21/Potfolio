@@ -33,19 +33,19 @@ export const Contact = () => {
     {
       name: 'GitHub',
       icon: Github,
-      url: 'https://github.com/yourusername',
+      url: 'https://github.com/minturam21',
       color: 'hover:text-gray-800 dark:hover:text-white'
     },
     {
       name: 'LinkedIn',
       icon: Linkedin,
-      url: 'https://linkedin.com/in/yourusername',
+      url: 'https://linkedin.com/in/minturam20',
       color: 'hover:text-blue-600'
     },
     {
       name: 'Email',
       icon: Mail,
-      url: 'mailto:your.email@example.com',
+      url: 'ramchiarymintu84@gmail.com',
       color: 'hover:text-red-500'
     }
   ];
@@ -54,19 +54,19 @@ export const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'your.email@example.com',
-      href: 'mailto:your.email@example.com'
+      value: 'ramchiarymintu84@gmail.com',
+      href: 'mailto:ramchiarymintu84@gmail.com'
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567'
+      value: '+91 7896827553',
+      href: 'tel:+917896827553'
     },
     {
       icon: MapPin,
-      label: 'Location',
-      value: 'City, Country',
+      label: 'Nogaon',
+      value: 'Guwahati, Assam, India',
       href: '#'
     }
   ];

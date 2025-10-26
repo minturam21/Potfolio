@@ -57,7 +57,7 @@ export const Hero = () => {
           >
             Hi, I'm{' '}
             <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              [Your Name]
+              Mintu Ramchiary
             </span>{' '}
             👋
           </motion.h1>

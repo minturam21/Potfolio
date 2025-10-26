@@ -103,7 +103,7 @@ export default function Portfolio() {
             </a>
           </div>
           <p className="text-slate-400 text-sm">
-            © 2025 [Your Name]. All Rights Reserved.
+            © 2025 Mintu Ramchiary. All Rights Reserved.
           </p>
         </div>
       </footer>
