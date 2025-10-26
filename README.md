@@ -1,46 +1,85 @@
-Shadcn-UI Template Usage Instructions
-technology stack
+
+# Shadcn-UI Template Usage Instructions
+
+## ✅ Technology Stack
 This project is built with:
 
-Vite
-TypeScript
-React
-shadcn-ui
-Tailwind CSS
-All shadcn/ui components have been downloaded under @/components/ui.
+- Vite  
+- TypeScript  
+- React  
+- shadcn-ui  
+- Tailwind CSS  
 
-File Structure
-index.html - HTML entry point
-vite.config.ts - Vite configuration file
-tailwind.config.js - Tailwind CSS configuration file
-package.json - NPM dependencies and scripts
-src/app.tsx - Root component of the project
-src/main.tsx - Project entry point
-src/index.css - Existing CSS configuration
-src/pages/Index.tsx - Home page logic
-Components
-All shadcn/ui components are pre-downloaded and available at @/components/ui
-Styling
-Add global styles to src/index.css or create new CSS files as needed
-Use Tailwind classes for styling components
-Development
-Import components from @/components/ui in your React components
-Customize the UI by modifying the Tailwind configuration
-Note
-The @/ path alias points to the src/ directory
-In your typescript code, don’t re-export types that you’re already importing
-Commands
-Install Dependencies
+All **shadcn/ui components** have been downloaded under `@/components/ui`.
 
+---
+
+## 📂 File Structure
+
+| File / Folder | Description |
+|--------------|-------------|
+| `index.html` | HTML entry point |
+| `vite.config.ts` | Vite configuration file |
+| `tailwind.config.js` | Tailwind CSS configuration file |
+| `package.json` | NPM dependencies and scripts |
+| `src/app.tsx` | Root component of the project |
+| `src/main.tsx` | Project entry point |
+| `src/index.css` | Existing CSS configuration |
+| `src/pages/Index.tsx` | Home page logic |
+
+---
+
+## 🧩 Components
+- All shadcn/ui components are **already included**
+- Import components from:
+
+```ts
+import { Button } from "@/components/ui/button"
+````
+
+---
+
+## 🎨 Styling
+
+* Add global styles in: `src/index.css`
+* You may create new CSS files if needed
+* Use Tailwind utility classes for UI styling
+
+---
+
+## 📌 Notes
+
+* The `@/` alias refers to the `src/` directory
+* Avoid re-exporting types that are already imported in TypeScript
+
+---
+
+## 🛠 Development Commands
+
+### 📌 Install Dependencies
+
+```sh
 pnpm i
-Add Dependencies
+```
 
+### ➕ Add a New Dependency
+
+```sh
 pnpm add some_new_dependency
+```
 
-**Start Preview**
+### ▶ Start Development Server
 
-```shell
+```sh
 pnpm run dev
-To build
+```
 
+### 🏗 Build for Production
+
+```sh
 pnpm run build
+```
+
+---
+
+
