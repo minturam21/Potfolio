@@ -4,8 +4,16 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Mail, Github, Linkedin, Send, MapPin, Phone } from 'lucide-react';
-import { useState } from 'react';
+import { Mail, Github, Linkedin, Send, MapPin, Phone, CheckCircle, History } from 'lucide-react';
+import { useState, useEffect } from 'react';
+
+interface ContactSubmission {
+  id: string;
+  name: string;
+  email: string;
+  message: string;
+  timestamp: string;
+}
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,13 +21,47 @@ export const Contact = () => {
     email: '',
     message: ''
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submissions, setSubmissions] = useState<ContactSubmission[]>([]);
+  const [showHistory, setShowHistory] = useState(false);
+
+  // Load submissions from localStorage on component mount
+  useEffect(() => {
+    const savedSubmissions = localStorage.getItem('contactSubmissions');
+    if (savedSubmissions) {
+      setSubmissions(JSON.parse(savedSubmissions));
+    }
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    
+    // Create new submission
+    const newSubmission: ContactSubmission = {
+      id: Date.now().toString(),
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      timestamp: new Date().toISOString()
+    };
+
+    // Update submissions array
+    const updatedSubmissions = [newSubmission, ...submissions];
+    setSubmissions(updatedSubmissions);
+
+    // Save to localStorage
+    localStorage.setItem('contactSubmissions', JSON.stringify(updatedSubmissions));
+
+    // Show success message
+    setIsSubmitted(true);
+    
     // Reset form
     setFormData({ name: '', email: '', message: '' });
+
+    // Hide success message after 3 seconds
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 3000);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -29,23 +71,39 @@ export const Contact = () => {
     });
   };
 
+  const clearHistory = () => {
+    localStorage.removeItem('contactSubmissions');
+    setSubmissions([]);
+    setShowHistory(false);
+  };
+
+  const formatDate = (timestamp: string) => {
+    return new Date(timestamp).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
   const socialLinks = [
     {
       name: 'GitHub',
       icon: Github,
-      url: 'https://github.com/minturam21',
+      url: 'https://github.com/yourusername',
       color: 'hover:text-gray-800 dark:hover:text-white'
     },
     {
       name: 'LinkedIn',
       icon: Linkedin,
-      url: 'https://linkedin.com/in/minturam20',
+      url: 'https://linkedin.com/in/yourusername',
       color: 'hover:text-blue-600'
     },
     {
       name: 'Email',
       icon: Mail,
-      url: 'ramchiarymintu84@gmail.com',
+      url: 'mailto:your.email@example.com',
       color: 'hover:text-red-500'
     }
   ];
@@ -54,19 +112,19 @@ export const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'ramchiarymintu84@gmail.com',
-      href: 'mailto:ramchiarymintu84@gmail.com'
+      value: 'your.email@example.com',
+      href: 'mailto:your.email@example.com'
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+91 7896827553',
-      href: 'tel:+917896827553'
+      value: '+1 (555) 123-4567',
+      href: 'tel:+15551234567'
     },
     {
       icon: MapPin,
-      label: 'Nogaon',
-      value: 'Guwahati, Assam, India',
+      label: 'Location',
+      value: 'City, Country',
       href: '#'
     }
   ];
@@ -100,9 +158,36 @@ export const Contact = () => {
             viewport={{ once: true }}
           >
             <Card className="p-8 bg-gradient-to-br from-white to-slate-50 dark:from-slate-800 dark:to-slate-900 border-slate-200 dark:border-slate-700">
-              <h3 className="text-2xl font-semibold text-slate-800 dark:text-white mb-6">
-                Send Me a Message
-              </h3>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-semibold text-slate-800 dark:text-white">
+                  Send Me a Message
+                </h3>
+                {submissions.length > 0 && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setShowHistory(!showHistory)}
+                    className="text-slate-600 dark:text-slate-400"
+                  >
+                    <History className="w-4 h-4 mr-2" />
+                    History ({submissions.length})
+                  </Button>
+                )}
+              </div>
+
+              {/* Success Message */}
+              {isSubmitted && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg flex items-center"
+                >
+                  <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 mr-3" />
+                  <span className="text-green-700 dark:text-green-300">
+                    Message sent successfully! Saved to your local storage.
+                  </span>
+                </motion.div>
+              )}
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
@@ -166,6 +251,52 @@ export const Contact = () => {
                   </Button>
                 </motion.div>
               </form>
+
+              {/* Message History */}
+              {showHistory && submissions.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  className="mt-8 border-t border-slate-200 dark:border-slate-700 pt-6"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-lg font-medium text-slate-800 dark:text-white">
+                      Message History
+                    </h4>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={clearHistory}
+                      className="text-red-600 hover:text-red-700 border-red-200 hover:border-red-300"
+                    >
+                      Clear All
+                    </Button>
+                  </div>
+                  <div className="space-y-3 max-h-64 overflow-y-auto">
+                    {submissions.map((submission) => (
+                      <div
+                        key={submission.id}
+                        className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700"
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="font-medium text-slate-800 dark:text-white text-sm">
+                            {submission.name}
+                          </span>
+                          <span className="text-xs text-slate-500 dark:text-slate-400">
+                            {formatDate(submission.timestamp)}
+                          </span>
+                        </div>
+                        <div className="text-xs text-slate-600 dark:text-slate-400 mb-1">
+                          {submission.email}
+                        </div>
+                        <div className="text-sm text-slate-700 dark:text-slate-300 line-clamp-2">
+                          {submission.message}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
             </Card>
           </motion.div>
 
