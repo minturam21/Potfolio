@@ -50,13 +50,15 @@ export const About = () => {
                 className="w-32 h-32 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 p-1"
               >
                 <img
-               src="/profile.jpg"
+               src="./profile.jpg"
                className="w-full h-full rounded-full object-cover"
+               style={{
+                      imageRendering: 'auto',
+                      filter: 'none',
+                    }}
               />
-
               </motion.div>
             </div>
-
             <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
               I'm currently a Physics undergraduate with a passion for data-driven insights, 
               scientific research, and intelligent systems. I enjoy solving problems that 
