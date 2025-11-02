@@ -80,7 +80,7 @@ export default function Portfolio() {
         <div className="container mx-auto px-6 text-center">
           <div className="flex justify-center space-x-6 mb-4">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/minturam21"
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-white transition-colors"
@@ -88,7 +88,7 @@ export default function Portfolio() {
               GitHub
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://linkedin.com/in/minturam20"
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-white transition-colors"
@@ -96,7 +96,7 @@ export default function Portfolio() {
               LinkedIn
             </a>
             <a
-              href="mailto:your.email@example.com"
+              href="mailto: ramchiarymintu84@gmail.com "
               className="text-slate-400 hover:text-white transition-colors"
             >
               Email

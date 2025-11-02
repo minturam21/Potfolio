@@ -49,9 +49,11 @@ export const About = () => {
                 whileHover={{ scale: 1.05 }}
                 className="w-32 h-32 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 p-1"
               >
-                <div className="w-full h-full rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
-                  <User className="w-16 h-16 text-slate-600 dark:text-slate-300" />
-                </div>
+                <img
+               src="/profile.jpg"
+               className="w-full h-full rounded-full object-cover"
+              />
+
               </motion.div>
             </div>
 
