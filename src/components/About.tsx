@@ -16,7 +16,9 @@ export const About = () => {
     { name: 'NumPy', level: 85 },
     { name: 'Pandas', level: 80 },
     { name: 'Jupyter', level: 85 },
-    { name: 'Git', level: 70 },
+    { name: 'MySQL', level: 70 },
+    { name: 'Scikit-learn', level: 60 },
+    { name: 'Git & GitHub', level: 70 },
   ];
 
   return (
